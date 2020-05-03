@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
-*/
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -75,8 +65,7 @@ double SimpleSamplerAudioProcessor::getTailLengthSeconds() const
 
 int SimpleSamplerAudioProcessor::getNumPrograms()
 {
-    return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
-                // so this should be at least 1, even if you're not really implementing programs.
+    return 1;
 }
 
 int SimpleSamplerAudioProcessor::getCurrentProgram()
@@ -101,6 +90,8 @@ void SimpleSamplerAudioProcessor::changeProgramName (int index, const String& ne
 void SimpleSamplerAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     mSampler.setCurrentPlaybackSampleRate(sampleRate);
+    
+    updateADSR();
 }
 
 void SimpleSamplerAudioProcessor::releaseResources()
@@ -148,7 +139,7 @@ void SimpleSamplerAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
 //==============================================================================
 bool SimpleSamplerAudioProcessor::hasEditor() const
 {
-    return true; // (change this to false if you choose to not supply an editor)
+    return true;
 }
 
 AudioProcessorEditor* SimpleSamplerAudioProcessor::createEditor()
@@ -209,6 +200,18 @@ void SimpleSamplerAudioProcessor::loadFile(const String& path)
     range.setRange(0, 128, true);
     
     mSampler.addSound(new SamplerSound("Sample", *mFormatReader, range, 60, 0.01, 0.01, 360));
+}
+
+void SimpleSamplerAudioProcessor::updateADSR()
+{
+    for (int i = 0; i < mSampler.getNumSounds(); i++)
+    {
+        if (auto sound = dynamic_cast<SamplerSound*>(mSampler.getSound(i).get()))
+        {
+            sound->setEnvelopeParameters (mADSRParams);
+        }
+    }
+    DBG ("A: " << attack << " D: " << decay << " S: " << sustain << " R: " << release);
 }
 
 

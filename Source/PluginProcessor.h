@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include <JuceHeader.h>
@@ -61,11 +51,22 @@ public:
     int getNumSamplerSounds() { return mSampler.getNumSounds(); }
     AudioBuffer<float>& getWaveform() { return mWaveform; }
     
+    void updateADSR();
+    
+    float attack { 0.0 };
+    float decay { 0.0 };
+    float sustain { 1.0 };
+    float release { 0.0 };
+    
+    ADSR::Parameters& getADSRParams() { return mADSRParams; };
+    
 private:
     Synthesiser mSampler;
     const int mNumVoices { 8 };
     
     AudioBuffer<float> mWaveform;
+    
+    ADSR::Parameters mADSRParams;
     
     AudioFormatManager mFormatManager;
     AudioFormatReader* mFormatReader { nullptr };

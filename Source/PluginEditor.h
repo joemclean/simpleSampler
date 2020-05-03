@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin editor.
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include <JuceHeader.h>
@@ -17,7 +7,8 @@
 /**
 */
 class SimpleSamplerAudioProcessorEditor  : public AudioProcessorEditor,
-                                           public FileDragAndDropTarget
+                                           public FileDragAndDropTarget,
+                                           public Slider::Listener
 {
 public:
     SimpleSamplerAudioProcessorEditor (SimpleSamplerAudioProcessor&);
@@ -29,6 +20,8 @@ public:
     
     bool isInterestedInFileDrag (const StringArray& files) override;
     void filesDropped (const StringArray &files, int x, int y) override;
+    
+    void sliderValueChanged (Slider* slider) override;
 
 private:
     
@@ -38,6 +31,9 @@ private:
     SimpleSamplerAudioProcessor& processor;
     
     std::vector<float> mAudioPoints;
+    
+    Slider mAttackSlider, mDecaySlider, mSustainSlider, mReleaseSlider;
+    Label mAttackLabel, mDecayLabel, mSustainLabel, mReleaseLabel;
     
     bool repaintWaveform { false };
 
