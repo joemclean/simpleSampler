@@ -194,6 +194,17 @@ void SimpleSamplerAudioProcessor::loadFile(const String& path)
     auto file = File (path);
     mFormatReader = mFormatManager.createReaderFor (file);
     
+    auto sampleLength = static_cast<int>(mFormatReader->lengthInSamples);
+    mWaveform.setSize(1, sampleLength);
+    mFormatReader->read(&mWaveform, 0, sampleLength, 0, true, false);
+    
+    auto buffer = mWaveform.getReadPointer (0);
+    
+    for (int sample = 0; sample < mWaveform.getNumSamples(); ++sample)
+    {
+        DBG (buffer[sample]);
+    }
+    
     BigInteger range;
     range.setRange(0, 128, true);
     
