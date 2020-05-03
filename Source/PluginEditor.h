@@ -16,7 +16,8 @@
 //==============================================================================
 /**
 */
-class SimpleSamplerAudioProcessorEditor  : public AudioProcessorEditor
+class SimpleSamplerAudioProcessorEditor  : public AudioProcessorEditor,
+                                           public FileDragAndDropTarget
 {
 public:
     SimpleSamplerAudioProcessorEditor (SimpleSamplerAudioProcessor&);
@@ -25,6 +26,9 @@ public:
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
+    
+    bool isInterestedInFileDrag (const StringArray& files) override;
+    void filesDropped (const StringArray &files, int x, int y) override;
 
 private:
     

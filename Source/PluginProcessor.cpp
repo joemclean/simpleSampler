@@ -172,6 +172,8 @@ void SimpleSamplerAudioProcessor::setStateInformation (const void* data, int siz
 
 void SimpleSamplerAudioProcessor::loadFile ()
 {
+    mSampler.clearSounds();
+    
     FileChooser chooser {"Please load a file."};
     if (chooser.browseForFileToOpen())
     {
@@ -184,6 +186,21 @@ void SimpleSamplerAudioProcessor::loadFile ()
     
     mSampler.addSound(new SamplerSound( "Sample", *mFormatReader, range, 60, 0.01, 0.01, 360));
 }
+
+void SimpleSamplerAudioProcessor::loadFile(const String& path)
+{
+    mSampler.clearSounds();
+    
+    auto file = File (path);
+    mFormatReader = mFormatManager.createReaderFor (file);
+    
+    BigInteger range;
+    range.setRange(0, 128, true);
+    
+    mSampler.addSound(new SamplerSound("Sample", *mFormatReader, range, 60, 0.01, 0.01, 360));
+}
+
+
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
