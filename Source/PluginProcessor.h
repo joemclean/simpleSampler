@@ -5,7 +5,8 @@
 //==============================================================================
 /**
 */
-class SimpleSamplerAudioProcessor  : public AudioProcessor
+class SimpleSamplerAudioProcessor  : public AudioProcessor,
+                                     public ValueTree::Listener
 {
 public:
     //==============================================================================
@@ -60,6 +61,8 @@ public:
     
     ADSR::Parameters& getADSRParams() { return mADSRParams; };
     
+    AudioProcessorValueTreeState& getAPVTS() { return mAPVTS; }
+    
 private:
     Synthesiser mSampler;
     const int mNumVoices { 8 };
@@ -70,6 +73,13 @@ private:
     
     AudioFormatManager mFormatManager;
     AudioFormatReader* mFormatReader { nullptr };
+    
+    AudioProcessorValueTreeState mAPVTS;
+    AudioProcessorValueTreeState::ParameterLayout createParameters();
+    
+    void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property ) override;
+    
+    std::atomic<bool> mShouldUpdate { false };
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SimpleSamplerAudioProcessor)

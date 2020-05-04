@@ -11,10 +11,11 @@ SimpleSamplerAudioProcessor::SimpleSamplerAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), mAPVTS(*this, nullptr, "PARAMETERS", createParameters())
 #endif
 {
     mFormatManager.registerBasicFormats();
+    mAPVTS.state.addListener (this);
     
     for (int i = 0; i < mNumVoices; i++){
         mSampler.addVoice(new SamplerVoice());
@@ -91,7 +92,9 @@ void SimpleSamplerAudioProcessor::prepareToPlay (double sampleRate, int samplesP
 {
     mSampler.setCurrentPlaybackSampleRate(sampleRate);
     
-    updateADSR();
+    if (mShouldUpdate) {
+        updateADSR();
+    }
 }
 
 void SimpleSamplerAudioProcessor::releaseResources()
@@ -132,6 +135,8 @@ void SimpleSamplerAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
+    
+    updateADSR();
 
     mSampler.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 }
@@ -200,10 +205,17 @@ void SimpleSamplerAudioProcessor::loadFile(const String& path)
     range.setRange(0, 128, true);
     
     mSampler.addSound(new SamplerSound("Sample", *mFormatReader, range, 60, 0.01, 0.01, 360));
+    
+    updateADSR();
 }
 
 void SimpleSamplerAudioProcessor::updateADSR()
 {
+    mADSRParams.attack = mAPVTS.getRawParameterValue("ATTACK")->load();
+    mADSRParams.decay = mAPVTS.getRawParameterValue("DECAY")->load();
+    mADSRParams.sustain = mAPVTS.getRawParameterValue("SUSTAIN")->load();
+    mADSRParams.release = mAPVTS.getRawParameterValue("RELEASE")->load();
+    
     for (int i = 0; i < mSampler.getNumSounds(); i++)
     {
         if (auto sound = dynamic_cast<SamplerSound*>(mSampler.getSound(i).get()))
@@ -212,6 +224,23 @@ void SimpleSamplerAudioProcessor::updateADSR()
         }
     }
     DBG ("A: " << attack << " D: " << decay << " S: " << sustain << " R: " << release);
+}
+
+AudioProcessorValueTreeState::ParameterLayout SimpleSamplerAudioProcessor::createParameters()
+{
+    std::vector<std::unique_ptr<RangedAudioParameter>> parameters;
+    
+    parameters.push_back (std::make_unique<AudioParameterFloat> ("ATTACK", "Attack", 0.0f, 5.0f, 0.0f));
+    parameters.push_back (std::make_unique<AudioParameterFloat> ("DECAY", "Decay", 0.0f, 5.0f, 0.0f));
+    parameters.push_back (std::make_unique<AudioParameterFloat> ("SUSTAIN", "Sustain", 0.0f, 1.0f, 1.0f));
+    parameters.push_back (std::make_unique<AudioParameterFloat> ("RELEASE", "Release", 0.0f, 5.0f, 0.0f));
+    
+    return { parameters.begin(), parameters.end() };
+}
+
+void SimpleSamplerAudioProcessor::valueTreePropertyChanged(ValueTree &treeWhosePropertyHasChanged, const Identifier &property)
+{
+    mShouldUpdate = true;
 }
 
 

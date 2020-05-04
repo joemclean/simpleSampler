@@ -11,8 +11,6 @@ SimpleSamplerAudioProcessorEditor::SimpleSamplerAudioProcessorEditor (SimpleSamp
     // Attack Slider
     mAttackSlider.setSliderStyle(Slider::SliderStyle::RotaryVerticalDrag);
     mAttackSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 40, 20);
-    mAttackSlider.setRange(0.0f, 5.0f, 0.01);
-    mAttackSlider.addListener(this);
     addAndMakeVisible(mAttackSlider);
     
     mAttackLabel.setFont(10.0f);
@@ -20,11 +18,11 @@ SimpleSamplerAudioProcessorEditor::SimpleSamplerAudioProcessorEditor (SimpleSamp
     mAttackLabel.setJustificationType(Justification::centredTop);
     mAttackLabel.attachToComponent(&mAttackSlider, false);
     
+    mAttackAttachment = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.getAPVTS(), "ATTACK", mAttackSlider);
+    
     // Decay Slider
     mDecaySlider.setSliderStyle(Slider::SliderStyle::RotaryVerticalDrag);
     mDecaySlider.setTextBoxStyle(Slider::TextBoxBelow, false, 40, 20);
-    mDecaySlider.setRange(0.0f, 5.0f, 0.01);
-    mDecaySlider.addListener(this);
     addAndMakeVisible(mDecaySlider);
     
     mDecayLabel.setFont(10.0f);
@@ -32,11 +30,11 @@ SimpleSamplerAudioProcessorEditor::SimpleSamplerAudioProcessorEditor (SimpleSamp
     mDecayLabel.setJustificationType(Justification::centredTop);
     mDecayLabel.attachToComponent(&mDecaySlider, false);
     
+    mDecayAttachment = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.getAPVTS(), "DECAY", mDecaySlider);
+    
     // Sustain Slider
     mSustainSlider.setSliderStyle(Slider::SliderStyle::RotaryVerticalDrag);
     mSustainSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 40, 20);
-    mSustainSlider.setRange(0.0f, 1.0f, 0.01);
-    mSustainSlider.addListener(this);
     addAndMakeVisible(mSustainSlider);
     
     mSustainLabel.setFont(10.0f);
@@ -44,17 +42,19 @@ SimpleSamplerAudioProcessorEditor::SimpleSamplerAudioProcessorEditor (SimpleSamp
     mSustainLabel.setJustificationType(Justification::centredTop);
     mSustainLabel.attachToComponent(&mSustainSlider, false);
     
+    mSustainAttachment = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.getAPVTS(), "SUSTAIN", mSustainSlider);
+
     // Release Slider
     mReleaseSlider.setSliderStyle(Slider::SliderStyle::RotaryVerticalDrag);
     mReleaseSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 40, 20);
-    mReleaseSlider.setRange(0.0f, 5.0f, 0.01);
-    mReleaseSlider.addListener(this);
     addAndMakeVisible(mReleaseSlider);
     
     mReleaseLabel.setFont(10.0f);
     mReleaseLabel.setText("Release", NotificationType::dontSendNotification);
     mReleaseLabel.setJustificationType(Justification::centredTop);
     mReleaseLabel.attachToComponent(&mReleaseSlider, false);
+    
+    mReleaseAttachment = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.getAPVTS(), "RELEASE", mReleaseSlider);
     
     setSize (600, 200);
 }
@@ -146,18 +146,4 @@ void SimpleSamplerAudioProcessorEditor::filesDropped(const StringArray &files, i
         }
     }
     repaint();
-}
-
-void SimpleSamplerAudioProcessorEditor::sliderValueChanged(Slider* slider)
-{
-    if (slider == &mAttackSlider) {
-        processor.getADSRParams().attack = mAttackSlider.getValue();
-    } else if (slider == &mDecaySlider) {
-        processor.getADSRParams().decay = mDecaySlider.getValue();
-    } else if (slider == &mSustainSlider) {
-        processor.getADSRParams().sustain = mSustainSlider.getValue();
-    } else if (slider == &mReleaseSlider) {
-        processor.getADSRParams().release = mReleaseSlider.getValue();
-    }
-    processor.updateADSR();
 }
