@@ -23,5 +23,5 @@ void SimpleSamplerAudioProcessorEditor::paint (Graphics& g)
 void SimpleSamplerAudioProcessorEditor::resized()
 {
     mWaveformDisplay.setBoundsRelative(0.0f, 0.25f, 1.0f, 0.5f);
-    mADSRControls.setBoundsRelative(0.5, 0.75, 0.5, 0.25);
+    mADSRControls.setBoundsRelative(0.6, 0.75, 0.4, 0.25);
 }

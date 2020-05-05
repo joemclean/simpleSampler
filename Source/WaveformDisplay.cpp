@@ -68,7 +68,7 @@ void WaveformDisplay::paint (Graphics& g)
 
     } else {
         g.setColour(Colours::white);
-        g.setFont(40.0f);
+        g.setFont(24.0f);
         g.drawFittedText("Drop an audio file to load", getLocalBounds(), Justification::centred, 1);
         mLoadButton.setBoundsRelative(0.25f, 0.7f, 0.5f, 0.2f);
         mLoadButton.setVisible(true);

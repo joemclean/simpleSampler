@@ -71,7 +71,7 @@ void ADSRControls::paint (Graphics& g)
 {
     const auto startX = 0.0f;
     const auto startY = 0.0f;
-    const auto dialWidth = 0.2f;
+    const auto dialWidth = 0.25f;
     const auto dialHeight = 1.0f;
     
     mAttackSlider.setBoundsRelative(startX, startY, dialWidth, dialHeight);
