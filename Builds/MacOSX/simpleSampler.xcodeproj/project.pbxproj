@@ -85,6 +85,14 @@
 			isa = PBXBuildFile;
 			fileRef = D9FC1832E68315C3FE9CCF2B;
 		};
+		756061442CB309B65E8D6AE8 = {
+			isa = PBXBuildFile;
+			fileRef = 1DB9480DEA27FA6C17881490;
+		};
+		C14D488CF5C9BD055B846BD0 = {
+			isa = PBXBuildFile;
+			fileRef = 2E8FD1FFE1C5DBF0B171E16E;
+		};
 		3AD6A34FC098ADF56230F8BE = {
 			isa = PBXBuildFile;
 			fileRef = 94E8E3355FAACA1609213E7A;
@@ -249,6 +257,13 @@
 			path = System/Library/Frameworks/CoreAudio.framework;
 			sourceTree = SDKROOT;
 		};
+		1DB9480DEA27FA6C17881490 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = ADSRControls.cpp;
+			path = ../../Source/ADSRControls.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		2198DD84D790027E3EB20DF5 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -268,6 +283,20 @@
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_opengl.mm";
 			path = "../../JuceLibraryCode/include_juce_opengl.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
+		2E8FD1FFE1C5DBF0B171E16E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = WaveformDisplay.cpp;
+			path = ../../Source/WaveformDisplay.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		30AD19A26F597BF0255F7EA0 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = ADSRControls.h;
+			path = ../../Source/ADSRControls.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		312D5EDC17B379EC7C556EB0 = {
@@ -410,6 +439,13 @@
 			path = System/Library/Frameworks/Accelerate.framework;
 			sourceTree = SDKROOT;
 		};
+		ABFFD82EB350DB0A5E4866EC = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_cryptography";
+			path = "/Applications/JUCE/modules/juce_cryptography";
+			sourceTree = "<absolute>";
+		};
 		B3C4FCE74768126658542E49 = {
 			isa = PBXFileReference;
 			explicitFileType = wrapper.application;
@@ -465,13 +501,6 @@
 			name = OpenGL.framework;
 			path = System/Library/Frameworks/OpenGL.framework;
 			sourceTree = SDKROOT;
-		};
-		ABFFD82EB350DB0A5E4866EC = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_cryptography";
-			path = "/Applications/JUCE/modules/juce_cryptography";
-			sourceTree = "<absolute>";
 		};
 		B121F95853596B64C3000E17 = {
 			isa = PBXFileReference;
@@ -543,6 +572,13 @@
 			path = "../../JuceLibraryCode/include_juce_gui_extra.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		E96959267AB891CD8DEF21C4 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = WaveformDisplay.h;
+			path = ../../Source/WaveformDisplay.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		ED4AAA710D100E4D14D24BB6 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -599,6 +635,10 @@
 				312D5EDC17B379EC7C556EB0,
 				D9FC1832E68315C3FE9CCF2B,
 				6B43512E6BAD850EC5A92F0F,
+				1DB9480DEA27FA6C17881490,
+				30AD19A26F597BF0255F7EA0,
+				2E8FD1FFE1C5DBF0B171E16E,
+				E96959267AB891CD8DEF21C4,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -1477,6 +1517,8 @@
 			files = (
 				ACF70F3ED77BDC6251F2D409,
 				8170DF6407E76BAA187C72CA,
+				756061442CB309B65E8D6AE8,
+				C14D488CF5C9BD055B846BD0,
 				3AD6A34FC098ADF56230F8BE,
 				00931043DB8E672507B2E98D,
 				0BAC43932598D52B0597CCF3,

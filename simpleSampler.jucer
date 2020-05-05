@@ -11,6 +11,13 @@
       <FILE id="lyIPqQ" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="Hjf9BZ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="zUgZ8S" name="ADSRControls.cpp" compile="1" resource="0"
+            file="Source/ADSRControls.cpp"/>
+      <FILE id="X6DCby" name="ADSRControls.h" compile="0" resource="0" file="Source/ADSRControls.h"/>
+      <FILE id="IUFqGD" name="WaveformDisplay.cpp" compile="1" resource="0"
+            file="Source/WaveformDisplay.cpp"/>
+      <FILE id="qltGLr" name="WaveformDisplay.h" compile="0" resource="0"
+            file="Source/WaveformDisplay.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

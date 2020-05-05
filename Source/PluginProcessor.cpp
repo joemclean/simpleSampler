@@ -166,6 +166,8 @@ void SimpleSamplerAudioProcessor::setStateInformation (const void* data, int siz
     // whose contents will have been created by the getStateInformation() call.
 }
 
+
+// TODO clean up and remove duplication
 void SimpleSamplerAudioProcessor::loadFile ()
 {
     mSampler.clearSounds();
@@ -230,10 +232,10 @@ AudioProcessorValueTreeState::ParameterLayout SimpleSamplerAudioProcessor::creat
 {
     std::vector<std::unique_ptr<RangedAudioParameter>> parameters;
     
-    parameters.push_back (std::make_unique<AudioParameterFloat> ("ATTACK", "Attack", 0.0f, 5.0f, 0.0f));
-    parameters.push_back (std::make_unique<AudioParameterFloat> ("DECAY", "Decay", 0.0f, 5.0f, 0.0f));
-    parameters.push_back (std::make_unique<AudioParameterFloat> ("SUSTAIN", "Sustain", 0.0f, 1.0f, 1.0f));
-    parameters.push_back (std::make_unique<AudioParameterFloat> ("RELEASE", "Release", 0.0f, 5.0f, 0.0f));
+    parameters.push_back (std::make_unique<AudioParameterFloat> ("ATTACK", "Attack", 0.001f, 5.0f, 0.001f));
+    parameters.push_back (std::make_unique<AudioParameterFloat> ("DECAY", "Decay", 0.001f, 3.0f, 0.001f));
+    parameters.push_back (std::make_unique<AudioParameterFloat> ("SUSTAIN", "Sustain", 0.001f, 1.0f, 1.0f));
+    parameters.push_back (std::make_unique<AudioParameterFloat> ("RELEASE", "Release", 0.001f, 5.0f, 0.001f));
     
     return { parameters.begin(), parameters.end() };
 }
