@@ -65,6 +65,14 @@ void WaveformDisplay::paint (Graphics& g)
         
         auto textBounds = getLocalBounds().reduced (10,10);
         g.drawFittedText(mFilename, textBounds, Justification::topRight, 1);
+        
+        auto playheadPosition = jmap<int> (processor.getSampleCount(), 0, processor.getWaveform().getNumSamples(), 0, getWidth());
+        
+        g.setColour(Colours::white);
+        g.drawLine(playheadPosition, 0, playheadPosition, getHeight());
+        
+        g.setColour(Colours::black.withAlpha(0.2f));
+        g.fillRect(0, 0, playheadPosition, getHeight());
 
     } else {
         g.setColour(Colours::white);

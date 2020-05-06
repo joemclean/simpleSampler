@@ -136,7 +136,26 @@ void SimpleSamplerAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
-    updateADSR();
+    if (mShouldUpdate) {
+      updateADSR();
+    }
+    
+    MidiMessage m;
+    MidiBuffer::Iterator iterator { midiMessages };
+    int sample;
+    
+    while (iterator.getNextEvent(m, sample))
+    {
+        if (m.isNoteOn()){
+            mIsNotePlayed = true;
+        }
+        else if (m.isNoteOff())
+        {
+            mIsNotePlayed = false;
+        }
+    }
+    
+    mSampleCount = mIsNotePlayed ? mSampleCount += buffer.getNumSamples() : 0;
 
     mSampler.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 }

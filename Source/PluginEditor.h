@@ -8,7 +8,8 @@
 //==============================================================================
 /**
 */
-class SimpleSamplerAudioProcessorEditor  : public AudioProcessorEditor
+class SimpleSamplerAudioProcessorEditor  : public AudioProcessorEditor,
+                                           public Timer
 {
 public:
     SimpleSamplerAudioProcessorEditor (SimpleSamplerAudioProcessor&);
@@ -17,6 +18,8 @@ public:
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
+    
+    void timerCallback() override;
 
 private:
     SimpleSamplerAudioProcessor& processor;

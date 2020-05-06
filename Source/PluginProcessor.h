@@ -63,6 +63,9 @@ public:
     
     AudioProcessorValueTreeState& getAPVTS() { return mAPVTS; }
     
+    std::atomic<bool>& isNotePlayed() { return mIsNotePlayed; }
+    std::atomic<int>& getSampleCount() { return mSampleCount; }
+    
 private:
     Synthesiser mSampler;
     const int mNumVoices { 8 };
@@ -80,6 +83,8 @@ private:
     void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property ) override;
     
     std::atomic<bool> mShouldUpdate { false };
+    std::atomic<bool> mIsNotePlayed { false };
+    std::atomic<int> mSampleCount { 0 };
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SimpleSamplerAudioProcessor)
