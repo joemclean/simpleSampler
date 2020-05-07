@@ -26,7 +26,7 @@ WaveformDisplay::~WaveformDisplay()
 void WaveformDisplay::paint (Graphics& g)
 {
     
-    g.fillAll(Colours::cadetblue.darker());
+    g.fillAll(Colour(0xff0033ff));
     
     auto waveform = processor.getWaveform();
     
@@ -63,7 +63,7 @@ void WaveformDisplay::paint (Graphics& g)
         
         g.setColour(Colours::white);
         
-        auto textBounds = getLocalBounds().reduced (10,10);
+        auto textBounds = getLocalBounds().reduced (16, 16);
         g.drawFittedText(mFilename, textBounds, Justification::topRight, 1);
         
         auto playheadPosition = jmap<int> (processor.getSampleCount(), 0, processor.getWaveform().getNumSamples(), 0, getWidth());
@@ -76,8 +76,8 @@ void WaveformDisplay::paint (Graphics& g)
 
     } else {
         g.setColour(Colours::white);
-        g.setFont(24.0f);
-        g.drawFittedText("Drop an audio file to load", getLocalBounds(), Justification::centred, 1);
+        g.setFont(18.0f);
+        g.drawFittedText("Drag and drop an audio file", getLocalBounds(), Justification::centred, 1);
         mLoadButton.setBoundsRelative(0.25f, 0.7f, 0.5f, 0.2f);
         mLoadButton.setVisible(true);
     }

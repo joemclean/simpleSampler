@@ -15,19 +15,21 @@
 ADSRControls::ADSRControls(SimpleSamplerAudioProcessor& p) : processor(p)
 {
     // Attack Slider
-    mAttackSlider.setSliderStyle(Slider::SliderStyle::RotaryVerticalDrag);
-    mAttackSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 40, 20);
-    addAndMakeVisible(mAttackSlider);
+    mAttackSlider.setSliderStyle (Slider::SliderStyle::RotaryVerticalDrag);
+    mAttackSlider.setColour(Slider::ColourIds::thumbColourId, Colour(0xff0033ff));
+    mAttackSlider.setTextBoxStyle (Slider::TextBoxBelow, false, 40, 20);
+    addAndMakeVisible (mAttackSlider);
     
-    mAttackLabel.setFont(10.0f);
-    mAttackLabel.setText("Attack", NotificationType::dontSendNotification);
-    mAttackLabel.setJustificationType(Justification::centredTop);
+    mAttackLabel.setFont (10.0f);
+    mAttackLabel.setText ("Attack", NotificationType::dontSendNotification);
+    mAttackLabel.setJustificationType (Justification::centredTop);
     mAttackLabel.attachToComponent(&mAttackSlider, false);
     
     mAttackAttachment = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.getAPVTS(), "ATTACK", mAttackSlider);
     
     // Decay Slider
     mDecaySlider.setSliderStyle(Slider::SliderStyle::RotaryVerticalDrag);
+    mDecaySlider.setColour(Slider::ColourIds::thumbColourId, Colour(0xff0033ff));
     mDecaySlider.setTextBoxStyle(Slider::TextBoxBelow, false, 40, 20);
     addAndMakeVisible(mDecaySlider);
     
@@ -40,6 +42,7 @@ ADSRControls::ADSRControls(SimpleSamplerAudioProcessor& p) : processor(p)
     
     // Sustain Slider
     mSustainSlider.setSliderStyle(Slider::SliderStyle::RotaryVerticalDrag);
+    mSustainSlider.setColour(Slider::ColourIds::thumbColourId, Colour(0xff0033ff));
     mSustainSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 40, 20);
     addAndMakeVisible(mSustainSlider);
     
@@ -52,6 +55,7 @@ ADSRControls::ADSRControls(SimpleSamplerAudioProcessor& p) : processor(p)
 
     // Release Slider
     mReleaseSlider.setSliderStyle(Slider::SliderStyle::RotaryVerticalDrag);
+    mReleaseSlider.setColour(Slider::ColourIds::thumbColourId, Colour(0xff0033ff));
     mReleaseSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 40, 20);
     addAndMakeVisible(mReleaseSlider);
     
@@ -69,6 +73,11 @@ ADSRControls::~ADSRControls()
 
 void ADSRControls::paint (Graphics& g)
 {
+    g.fillAll(Colours::black);
+}
+
+void ADSRControls::resized()
+{
     const auto startX = 0.0f;
     const auto startY = 0.0f;
     const auto dialWidth = 0.25f;
@@ -76,13 +85,7 @@ void ADSRControls::paint (Graphics& g)
     
     mAttackSlider.setBoundsRelative(startX, startY, dialWidth, dialHeight);
     mDecaySlider.setBoundsRelative(startX + dialWidth, startY, dialWidth, dialHeight);
-    mSustainSlider.setBoundsRelative(startX + dialWidth*2, startY, dialWidth, dialHeight);
-    mReleaseSlider.setBoundsRelative(startX + dialWidth*3, startY, dialWidth, dialHeight);  // draw some placeholder text
-}
-
-void ADSRControls::resized()
-{
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+    mSustainSlider.setBoundsRelative(startX + dialWidth * 2, startY, dialWidth, dialHeight);
+    mReleaseSlider.setBoundsRelative(startX + dialWidth * 3, startY, dialWidth, dialHeight);
 
 }

@@ -7,10 +7,12 @@ SimpleSamplerAudioProcessorEditor::SimpleSamplerAudioProcessorEditor (SimpleSamp
 {
     addAndMakeVisible(mWaveformDisplay);
     addAndMakeVisible(mADSRControls);
+    addAndMakeVisible(mLogoComponent);
+    
     
     startTimerHz(30);
     
-    setSize (600, 400);
+    setSize (600, 300);
 }
 
 SimpleSamplerAudioProcessorEditor::~SimpleSamplerAudioProcessorEditor()
@@ -26,8 +28,9 @@ void SimpleSamplerAudioProcessorEditor::paint (Graphics& g)
 
 void SimpleSamplerAudioProcessorEditor::resized()
 {
-    mWaveformDisplay.setBoundsRelative(0.0f, 0.25f, 1.0f, 0.5f);
-    mADSRControls.setBoundsRelative(0.6, 0.75, 0.4, 0.25);
+    mWaveformDisplay.setBoundsRelative(0.0f, 0.0f, 1.0f, 0.7);
+    mLogoComponent.setBoundsRelative(0.0, 0.7, 0.4, 0.3);
+    mADSRControls.setBoundsRelative(0.6, 0.7, 0.4, 0.3);
 }
 
 void SimpleSamplerAudioProcessorEditor::timerCallback()

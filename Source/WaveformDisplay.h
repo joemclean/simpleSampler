@@ -31,7 +31,7 @@ public:
 
 private:
     
-    TextButton mLoadButton { "Load" };
+    TextButton mLoadButton { "Browse for a file" };
     
     std::vector<float> mAudioPoints;
     

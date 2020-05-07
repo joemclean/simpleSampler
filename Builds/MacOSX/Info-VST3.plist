@@ -8,11 +8,11 @@
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>com.yourcompany.simpleSampler</string>
+    <string>com.McLean.SimpleSampler</string>
     <key>CFBundleName</key>
-    <string>simpleSampler</string>
+    <string>Simple Sampler</string>
     <key>CFBundleDisplayName</key>
-    <string>simpleSampler</string>
+    <string>Simple Sampler</string>
     <key>CFBundlePackageType</key>
     <string>BNDL</string>
     <key>CFBundleSignature</key>

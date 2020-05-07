@@ -4,6 +4,7 @@
 #include "PluginProcessor.h"
 #include "WaveformDisplay.h"
 #include "ADSRControls.h"
+#include "LogoComponent.h"
 
 //==============================================================================
 /**
@@ -26,6 +27,7 @@ private:
     
     WaveformDisplay mWaveformDisplay;
     ADSRControls mADSRControls;
+    LogoComponent mLogoComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SimpleSamplerAudioProcessorEditor)
 };

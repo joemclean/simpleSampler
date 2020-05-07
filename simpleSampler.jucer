@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="SP7Odz" name="simpleSampler" projectType="audioplug" jucerVersion="5.4.7"
-              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
-  <MAINGROUP id="OCGPfg" name="simpleSampler">
+<JUCERPROJECT id="SP7Odz" name="Simple Sampler" projectType="audioplug" jucerVersion="5.4.7"
+              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              companyName="McLean" companyEmail="mclean.joe@gmail.com" pluginFormats="buildAU,buildVST3">
+  <MAINGROUP id="OCGPfg" name="Simple Sampler">
     <GROUP id="{CB33C551-0BB2-FE0D-69BD-38FF21E800C1}" name="Source">
       <FILE id="CVnDPS" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -11,13 +12,16 @@
       <FILE id="lyIPqQ" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="Hjf9BZ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
-      <FILE id="zUgZ8S" name="ADSRControls.cpp" compile="1" resource="0"
-            file="Source/ADSRControls.cpp"/>
-      <FILE id="X6DCby" name="ADSRControls.h" compile="0" resource="0" file="Source/ADSRControls.h"/>
       <FILE id="IUFqGD" name="WaveformDisplay.cpp" compile="1" resource="0"
             file="Source/WaveformDisplay.cpp"/>
       <FILE id="qltGLr" name="WaveformDisplay.h" compile="0" resource="0"
             file="Source/WaveformDisplay.h"/>
+      <FILE id="pjA2H7" name="LogoComponent.cpp" compile="1" resource="0"
+            file="Source/LogoComponent.cpp"/>
+      <FILE id="JYPv8H" name="LogoComponent.h" compile="0" resource="0" file="Source/LogoComponent.h"/>
+      <FILE id="zUgZ8S" name="ADSRControls.cpp" compile="1" resource="0"
+            file="Source/ADSRControls.cpp"/>
+      <FILE id="X6DCby" name="ADSRControls.h" compile="0" resource="0" file="Source/ADSRControls.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
