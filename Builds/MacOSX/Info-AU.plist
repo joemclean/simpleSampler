@@ -8,19 +8,19 @@
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>com.McLean.simpleSampler</string>
+    <string>com.McLean.SimpleSampler</string>
     <key>CFBundleName</key>
-    <string>simpleSampler</string>
+    <string>Simple Sampler</string>
     <key>CFBundleDisplayName</key>
-    <string>simpleSampler</string>
+    <string>Simple Sampler</string>
     <key>CFBundlePackageType</key>
     <string>BNDL</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0.0</string>
+    <string>1.0.1</string>
     <key>CFBundleVersion</key>
-    <string>1.0.0</string>
+    <string>1.0.1</string>
     <key>NSHumanReadableCopyright</key>
     <string></string>
     <key>NSHighResolutionCapable</key>
@@ -29,11 +29,11 @@
     <array>
       <dict>
         <key>name</key>
-        <string>McLean: simpleSampler</string>
+        <string>McLean: Simple Sampler</string>
         <key>description</key>
-        <string>simpleSampler</string>
+        <string>Simple Sampler</string>
         <key>factoryFunction</key>
-        <string>simpleSamplerAUFactory</string>
+        <string>SimpleSamplerAUFactory</string>
         <key>manufacturer</key>
         <string>Manu</string>
         <key>type</key>
@@ -41,7 +41,7 @@
         <key>subtype</key>
         <string>Sp7o</string>
         <key>version</key>
-        <integer>65536</integer>
+        <integer>65537</integer>
         <key>resourceUsage</key>
         <dict>
           <key>network.client</key>

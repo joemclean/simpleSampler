@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="SP7Odz" name="simpleSampler" projectType="audioplug" jucerVersion="5.4.7"
+<JUCERPROJECT id="SP7Odz" name="Simple Sampler" projectType="audioplug" jucerVersion="5.4.7"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
-              companyName="McLean" companyEmail="mclean.joe@gmail.com" pluginFormats="buildAU,buildVST3">
-  <MAINGROUP id="OCGPfg" name="simpleSampler">
+              companyName="McLean" companyEmail="mclean.joe@gmail.com" pluginFormats="buildAU,buildVST3"
+              version="1.0.1">
+  <MAINGROUP id="OCGPfg" name="Simple Sampler">
     <GROUP id="{CB33C551-0BB2-FE0D-69BD-38FF21E800C1}" name="Source">
       <FILE id="CVnDPS" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>

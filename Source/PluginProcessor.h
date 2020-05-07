@@ -67,6 +67,7 @@ public:
     std::atomic<int>& getSampleCount() { return mSampleCount; }
     
 private:
+    
     Synthesiser mSampler;
     const int mNumVoices { 8 };
     
