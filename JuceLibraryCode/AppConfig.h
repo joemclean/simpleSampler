@@ -332,10 +332,10 @@
  #define JucePlugin_Enable_IAA             0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "Simple Sampler"
+ #define JucePlugin_Name                   "simpleSampler"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "Simple Sampler"
+ #define JucePlugin_Desc                   "simpleSampler"
 #endif
 #ifndef  JucePlugin_Manufacturer
  #define JucePlugin_Manufacturer           "McLean"
@@ -392,16 +392,16 @@
  #define JucePlugin_AUSubType              JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_AUExportPrefix
- #define JucePlugin_AUExportPrefix         SimpleSamplerAU
+ #define JucePlugin_AUExportPrefix         simpleSamplerAU
 #endif
 #ifndef  JucePlugin_AUExportPrefixQuoted
- #define JucePlugin_AUExportPrefixQuoted   "SimpleSamplerAU"
+ #define JucePlugin_AUExportPrefixQuoted   "simpleSamplerAU"
 #endif
 #ifndef  JucePlugin_AUManufacturerCode
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
 #endif
 #ifndef  JucePlugin_CFBundleIdentifier
- #define JucePlugin_CFBundleIdentifier     com.McLean.SimpleSampler
+ #define JucePlugin_CFBundleIdentifier     com.McLean.simpleSampler
 #endif
 #ifndef  JucePlugin_RTASCategory
  #define JucePlugin_RTASCategory           2048
@@ -419,7 +419,7 @@
  #define JucePlugin_RTASDisableMultiMono   0
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.McLean.SimpleSampler
+ #define JucePlugin_AAXIdentifier          com.McLean.simpleSampler
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode
@@ -443,7 +443,7 @@
  #define JucePlugin_IAASubType             JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_IAAName
- #define JucePlugin_IAAName                "McLean: Simple Sampler"
+ #define JucePlugin_IAAName                "McLean: simpleSampler"
 #endif
 #ifndef  JucePlugin_VSTNumMidiInputs
  #define JucePlugin_VSTNumMidiInputs       16

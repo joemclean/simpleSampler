@@ -46,7 +46,7 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    void loadFile();
+    void pickFile();
     void loadFile (const String& path);
     
     int getNumSamplerSounds() { return mSampler.getNumSounds(); }

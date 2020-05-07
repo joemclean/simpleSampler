@@ -14,7 +14,7 @@
 //==============================================================================
 WaveformDisplay::WaveformDisplay(SimpleSamplerAudioProcessor& p) : processor(p)
 {
-    mLoadButton.onClick = [&]() { processor.loadFile(); };
+    mLoadButton.onClick = [&]() { processor.pickFile(); };
     addChildComponent(mLoadButton);
 
 }

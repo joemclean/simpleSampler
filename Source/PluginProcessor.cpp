@@ -187,21 +187,14 @@ void SimpleSamplerAudioProcessor::setStateInformation (const void* data, int siz
 
 
 // TODO clean up and remove duplication
-void SimpleSamplerAudioProcessor::loadFile ()
+void SimpleSamplerAudioProcessor::pickFile ()
 {
-    mSampler.clearSounds();
-    
     FileChooser chooser {"Please load a file."};
     if (chooser.browseForFileToOpen())
     {
         auto file = chooser.getResult();
-        mFormatReader = mFormatManager.createReaderFor (file);
+        loadFile(file.getFullPathName());
     }
-    
-    BigInteger range;
-    range.setRange(0, 128, true);
-    
-    mSampler.addSound(new SamplerSound( "Sample", *mFormatReader, range, 60, 0.01, 0.01, 360));
 }
 
 void SimpleSamplerAudioProcessor::loadFile(const String& path)

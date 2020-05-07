@@ -9,7 +9,6 @@ SimpleSamplerAudioProcessorEditor::SimpleSamplerAudioProcessorEditor (SimpleSamp
     addAndMakeVisible(mADSRControls);
     addAndMakeVisible(mLogoComponent);
     
-    
     startTimerHz(30);
     
     setSize (600, 300);
