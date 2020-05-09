@@ -63,6 +63,7 @@ ADSRControls::ADSRControls(SimpleSamplerAudioProcessor& p) : processor(p)
     mReleaseLabel.setText("Release", NotificationType::dontSendNotification);
     mReleaseLabel.setJustificationType(Justification::centredTop);
     mReleaseLabel.attachToComponent(&mReleaseSlider, false);
+    mReleaseLabel.setBorderSize(BorderSize<int>(0));
     
     mReleaseAttachment = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.getAPVTS(), "RELEASE", mReleaseSlider);
 }
@@ -79,9 +80,9 @@ void ADSRControls::paint (Graphics& g)
 void ADSRControls::resized()
 {
     const auto startX = 0.0f;
-    const auto startY = 0.0f;
+    const auto startY = 0.2f;
     const auto dialWidth = 0.25f;
-    const auto dialHeight = 1.0f;
+    const auto dialHeight = 0.8f;
     
     mAttackSlider.setBoundsRelative(startX, startY, dialWidth, dialHeight);
     mDecaySlider.setBoundsRelative(startX + dialWidth, startY, dialWidth, dialHeight);

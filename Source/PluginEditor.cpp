@@ -27,9 +27,9 @@ void SimpleSamplerAudioProcessorEditor::paint (Graphics& g)
 
 void SimpleSamplerAudioProcessorEditor::resized()
 {
-    mWaveformDisplay.setBoundsRelative(0.0f, 0.0f, 1.0f, 0.7);
-    mLogoComponent.setBoundsRelative(0.0, 0.7, 0.4, 0.3);
-    mADSRControls.setBoundsRelative(0.6, 0.7, 0.4, 0.3);
+    mWaveformDisplay.setBoundsRelative(0.0f, 0.0f, 1.0f, 0.65);
+    mLogoComponent.setBoundsRelative(0.0, 0.65, 0.4, 0.35);
+    mADSRControls.setBoundsRelative(0.5, 0.65, 0.5, 0.35);
 }
 
 void SimpleSamplerAudioProcessorEditor::timerCallback()
